@@ -44,11 +44,14 @@ class SolveDiffusion2D:
         self.dy = dy
         self.nx = int(w / dx)
         self.ny = int(h / dy)
+        assert type(w) == float and type(h) == float and type(dx) == float and type(dy) == float, "w, h, dx, dy must be float"
+        
 
-    def initialize_physical_parameters(self, d=4., T_cold=300, T_hot=700):
+    def initialize_physical_parameters(self, d=4., T_cold=300., T_hot=700.):
         self.D = d
         self.T_cold = T_cold
         self.T_hot = T_hot
+        assert type(self.D) == float and type(self.T_cold) == float and type(self.T_hot) == float, "d, T_cold, T_hot must be float"
 
         # Computing a stable time step
         dx2, dy2 = self.dx * self.dx, self.dy * self.dy
@@ -137,3 +140,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
